@@ -635,6 +635,8 @@ if ( ! class_exists( 'Tribe__Events__Main' ) ) {
 			add_action( 'init', array( $this, 'init' ), 10 );
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 
+			add_filter( 'tribe_support_registered_template_systems', array( $this, 'register_template_updates' ) );
+
 			add_filter( 'tribe_events_before_html', array( $this, 'before_html_data_wrapper' ) );
 			add_filter( 'tribe_events_after_html', array( $this, 'after_html_data_wrapper' ) );
 
@@ -1043,6 +1045,25 @@ if ( ! class_exists( 'Tribe__Events__Main' ) ) {
 			}
 
 			return Tribe__Admin__Notices::instance()->undismiss( 'archive-slug-conflict' );
+		}
+
+		/**
+		 * Registers The Events Calendar with the views/overrides update checker.
+		 *
+		 * @since TBD
+		 *
+		 * @param array $plugins
+		 *
+		 * @return array
+		 */
+		public function register_template_updates( $plugins ) {
+			$plugins[ __( 'The Events Calendar', 'the-events-calendar' ) ] = array(
+				self::VERSION,
+				$this->pluginPath . 'src/views',
+				trailingslashit( get_stylesheet_directory() ) . 'tribe-events',
+			);
+
+			return $plugins;
 		}
 
 		/**
