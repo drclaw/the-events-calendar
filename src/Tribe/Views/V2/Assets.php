@@ -73,6 +73,7 @@ class Assets extends \tad_DI52_ServiceProvider {
 			[
 				'jquery',
 				'tribe-common',
+				'tribe-tooltipster',
 				'tribe-query-string',
 				'underscore',
 				'tribe-events-views-v2-accordion',
