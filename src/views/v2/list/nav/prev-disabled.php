@@ -21,7 +21,7 @@
 			$events_label = '<span class="tribe-events-c-nav__prev-label-plural"> ' . tribe_get_event_label_plural() . '</span>';
 			echo wp_kses(
 				/* translators: %s: Event (plural or singular). */
-				sprintf( __( 'Previous %1$s' ), $events_label ),
+				sprintf( __( 'Previous %1$s', 'the-events-calendar' ), $events_label ),
 				[ 'span' => [ 'class' => [] ] ]
 			);
 		?>
